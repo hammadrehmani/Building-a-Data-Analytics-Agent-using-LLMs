@@ -1,17 +1,13 @@
-# Environment variables
-.env
-.env.local
-
-# Python / bytecode
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.py[codz]
 *$py.class
+
+# C extensions
 *.so
+
+# Distribution / packaging
 .Python
-env/
-venv/
-.venv/
-ENV/
 build/
 develop-eggs/
 dist/
@@ -24,16 +20,31 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
+
+# Environments & Secrets
+.env
+.env.local
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Dynamic runtime files
 static/charts/*.png
-uploads/*.xlsx
-uploads/AI Job Market Dataset.csv
+uploads/*
+!uploads/.gitkeep
 logs/*
 !logs/.gitkeep
+exports/charts/*.png
+pandasai.log
 
 # IDE and OS files
 .vscode/
@@ -42,3 +53,22 @@ logs/*
 *.swo
 .DS_Store
 Thumbs.db
+tempCodeRunnerFile.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.pytest_cache/

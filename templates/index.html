@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Analysis Agent</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Markdown Parser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-chart-line-up-gradient-icon fa-chart-pie logo-icon"></i>
+                <h1>AI Data Analysis Agent</h1>
+            </div>
+            <p class="subtitle">Upload your dataset and ask questions to get instant insights and visualizations</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card upload-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-file-csv icon"></i>
+                    <h2>1. Load Dataset</h2>
+                </div>
+                
+                <div class="file-drop-zone" id="dropZone">
+                    <input type="file" id="fileInput" accept=".csv, .xlsx" class="file-input">
+                    <div class="drop-zone-content" id="dropZoneContent">
+                        <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                        <p class="primary-text">Drag & drop your CSV or Excel file here</p>
+                        <p class="secondary-text">or click to browse from your computer</p>
+                    </div>
+                    <div class="file-info-active" id="fileInfoActive" style="display: none;">
+                        <i class="fa-solid fa-file-circle-check success-icon"></i>
+                        <span class="file-name" id="selectedFileName">dataset.csv</span>
+                        <span class="file-size" id="selectedFileSize">0 KB</span>
+                        <button type="button" class="remove-file-btn" id="removeFileBtn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card query-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-wand-magic-sparkles icon"></i>
+                    <h2>2. Ask a Question</h2>
+                </div>
+                
+                <div class="input-wrapper">
+                    <textarea 
+                        id="question" 
+                        placeholder="e.g., What are the top 5 products by revenue? Plot a bar chart showing sales by region."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <button onclick="analyzeData()" id="analyzeBtn" class="primary-btn" disabled>
+                    <i class="fa-solid fa-play"></i> Analyze Dataset
+                </button>
+            </div>
+        </main>
+
+        <div class="result-section" id="resultSection" style="display: none;">
+            <div class="card result-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-message-bot fa-comment-dots icon"></i>
+                    <h2>Analysis Results</h2>
+                </div>
+                
+                <div id="loading" class="loading-container" style="display: none;">
+                    <div class="spinner"></div>
+                    <p class="loading-text" id="loadingText">Analyzing dataset and writing code...</p>
+                </div>
+
+                <div id="resultContent" class="result-content">
+                    <div id="resultText" class="markdown-body"></div>
+                    <div id="chartContainer" class="chart-container" style="display: none;">
+                        <h3 class="chart-title"><i class="fa-solid fa-image"></i> Generated Visualization</h3>
+                        <img id="resultChart" class="generated-chart" src="" alt="Generated Chart">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
